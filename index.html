@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Umut Can Çubukçu</title>
+<meta name="description" content="Umut Can Çubukçu, Computer Science and Engineering student at Sabancı University. Research on budget-constrained learning, cost-aware active learning and efficient language models.">
+<meta property="og:title" content="Umut Can Çubukçu">
+<meta property="og:description" content="Budget-constrained learning, cost-aware active learning and efficient language models.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F4F6F3;
+    --ink: #1D2321;
+    --muted: #5E6763;
+    --rule: #D6DCD7;
+    --cell: #E3E8E4;
+    --accent: #3352C2;
+    --accent-soft: #DCE3F8;
+    --serif: "Literata", Georgia, serif;
+    --sans: "Figtree", system-ui, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #141816;
+      --ink: #E4E9E6;
+      --muted: #9AA39F;
+      --rule: #2C3330;
+      --cell: #232A27;
+      --accent: #8FA6F2;
+      --accent-soft: #263258;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+  }
+  a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  a:hover { text-decoration-thickness: 2px; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+  .wrap { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* Header */
+  header.site { display: flex; justify-content: space-between; align-items: baseline; padding: 28px 0 0; font-family: var(--sans); font-size: .9375rem; }
+  header.site nav { display: flex; gap: 22px; flex-wrap: wrap; }
+  header.site nav a { color: var(--ink); text-decoration: none; }
+  header.site nav a:hover { color: var(--accent); }
+  .home { color: var(--muted); text-decoration: none; }
+
+  /* Hero */
+  .hero { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 56px; align-items: start; padding: 72px 0 64px; border-bottom: 1px solid var(--rule); }
+  h1 { font-weight: 600; font-size: clamp(2.25rem, 5vw, 3.25rem); line-height: 1.1; letter-spacing: -0.015em; margin: 0 0 20px; }
+  .role { font-family: var(--sans); color: var(--muted); font-size: 1rem; margin: 0 0 28px; line-height: 1.5; }
+  .bio { max-width: 34em; margin: 0 0 28px; }
+  .links { display: flex; gap: 10px; flex-wrap: wrap; font-family: var(--sans); font-size: .9375rem; }
+  .links a { display: inline-block; padding: 7px 14px; border: 1px solid var(--rule); border-radius: 999px; color: var(--ink); text-decoration: none; }
+  .links a:hover { border-color: var(--accent); color: var(--accent); }
+  .links a.primary { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .links a.primary:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+  /* Query table figure */
+  figure.qt { margin: 6px 0 0; font-family: var(--sans); }
+  .qt-grid { display: grid; grid-template-columns: 54px repeat(6, 1fr); gap: 4px; font-size: .75rem; color: var(--muted); }
+  .qt-grid .lab { text-align: center; padding-bottom: 2px; }
+  .qt-grid .ex { display: flex; align-items: center; padding-right: 6px; transition: color .3s; }
+  .qt-grid .ex.open { color: var(--ink); font-weight: 600; }
+  .qt-grid .c { aspect-ratio: 1; border-radius: 3px; background: var(--cell); transition: background .35s, transform .35s; }
+  .qt-grid .c.row-open { background: var(--accent-soft); }
+  .qt-grid .c.bought { background: var(--accent); transform: scale(.86); }
+  .budget { margin-top: 16px; }
+  .budget-bar { height: 6px; border-radius: 3px; background: var(--cell); overflow: hidden; }
+  .budget-fill { height: 100%; width: 0; background: var(--ink); transition: width .35s; }
+  .budget-text { display: flex; justify-content: space-between; font-size: .8125rem; color: var(--muted); margin-top: 6px; }
+  figcaption { font-size: .8125rem; color: var(--muted); line-height: 1.5; margin-top: 14px; }
+  .replay { font: inherit; font-size: .8125rem; background: none; border: 0; padding: 0; color: var(--accent); cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+
+  /* Sections */
+  section { padding: 56px 0; border-bottom: 1px solid var(--rule); }
+  section:last-of-type { border-bottom: 0; }
+  .sec { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 40px; }
+  h2 { font-family: var(--sans); font-weight: 600; font-size: 1rem; margin: 4px 0 0; }
+  h3 { font-weight: 600; font-size: 1.1875rem; line-height: 1.35; margin: 0 0 6px; }
+  p { margin: 0 0 14px; }
+  .meta { font-family: var(--sans); font-size: .875rem; color: var(--muted); margin: 0 0 10px; }
+
+  /* Research */
+  .paper { max-width: 40em; }
+  .paper + .paper { margin-top: 36px; padding-top: 32px; border-top: 1px dashed var(--rule); }
+  .paper ul { margin: 10px 0 0; padding-left: 1.1em; }
+  .paper li { margin-bottom: 6px; }
+  .status { display: inline-block; font-family: var(--sans); font-size: .8125rem; color: var(--accent); border: 1px solid var(--accent); border-radius: 999px; padding: 1px 10px; margin-left: 4px; vertical-align: 2px; }
+
+  /* Projects */
+  .projects { list-style: none; margin: 0; padding: 0; }
+  .projects li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 24px; padding: 18px 0; border-top: 1px solid var(--rule); }
+  .projects li:first-child { border-top: 0; padding-top: 0; }
+  .projects h3 { margin: 0; font-size: 1.0625rem; }
+  .projects h3 a { color: var(--ink); text-decoration: none; }
+  .projects h3 a:hover { color: var(--accent); text-decoration: underline; }
+  .projects p { grid-column: 1 / -1; margin: 0; color: var(--ink); max-width: 40em; }
+  .projects .stack { font-family: var(--sans); font-size: .8125rem; color: var(--muted); text-align: right; white-space: nowrap; align-self: baseline; }
+
+  /* Timeline */
+  .tl { list-style: none; margin: 0; padding: 0; }
+  .tl li { display: grid; grid-template-columns: 132px minmax(0, 1fr); gap: 24px; padding: 0 0 22px; }
+  .tl .when { font-family: var(--sans); font-size: .875rem; color: var(--muted); padding-top: 2px; }
+  .tl .what h3 { font-size: 1.0625rem; margin: 0 0 2px; }
+  .tl .what p { margin: 0; color: var(--muted); font-size: 1rem; }
+
+  /* Education */
+  .edu p { margin: 0 0 6px; }
+
+  footer { font-family: var(--sans); font-size: .8125rem; color: var(--muted); padding: 32px 0 48px; }
+
+  @media (max-width: 760px) {
+    .hero { grid-template-columns: 1fr; gap: 40px; padding: 48px 0 48px; }
+    figure.qt { max-width: 340px; }
+    .sec { grid-template-columns: 1fr; gap: 16px; }
+    .tl li { grid-template-columns: 1fr; gap: 2px; }
+    .projects li { grid-template-columns: 1fr; }
+    .projects .stack { text-align: left; white-space: normal; }
+    header.site { flex-direction: column; gap: 10px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .qt-grid .c, .budget-fill, .qt-grid .ex { transition: none; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="site">
+    <a class="home" href="#top">umutcanc7.github.io</a>
+    <nav aria-label="Sections">
+      <a href="#research">Research</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="cv.pdf">CV</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <div class="hero">
+      <div>
+        <h1>Umut Can Çubukçu</h1>
+        <p class="role">Computer Science and Engineering, Sabancı University<br>Minor in Mathematics, graduating January 2027</p>
+        <p class="bio">I study how to learn well on a budget: which data is worth labeling, which model is worth calling, and how to decide before the answers come back. My current work formulates batch selection in active learning as an optimization problem in which annotation cost is a hard constraint. I am applying to PhD programs for Fall 2027.</p>
+        <div class="links">
+          <a class="primary" href="cv.pdf">CV</a>
+          <a href="mailto:umut.cubukcu@sabanciuniv.edu">Email</a>
+          <a href="https://github.com/umutcanc7">GitHub</a>
+        </div>
+      </div>
+
+      <figure class="qt" aria-labelledby="qt-cap">
+        <div class="qt-grid" id="qt" aria-hidden="true"></div>
+        <div class="budget" aria-hidden="true">
+          <div class="budget-bar"><div class="budget-fill" id="fill"></div></div>
+          <div class="budget-text"><span>Budget spent</span><span id="spent">0 / 12</span></div>
+        </div>
+        <figcaption id="qt-cap">Each question buys one cell of the example–label table. Opening an example is paid once, so a second question about it costs less, and is also the most redundant. <button class="replay" id="replay" type="button">Replay</button></figcaption>
+      </figure>
+    </div>
+
+    <section id="research">
+      <div class="sec">
+        <h2>Research</h2>
+        <div>
+          <article class="paper">
+            <h3>Cost-aware batch-mode active learning for multi-label classification under binary partial feedback <span class="status">In preparation</span></h3>
+            <p class="meta">With Prof. O. Erhun Kundakçıoğlu, since April 2026. I am the only student on the project.</p>
+            <p>Annotators answer yes or no about one label on one example, and real annotation budgets are measured in time, not in number of questions. I formulate the choice of a batch of instance–label queries as an optimization model in which:</p>
+            <ul>
+              <li>the cost of a batch depends on its composition: inspecting an example is charged once, each question is charged separately;</li>
+              <li>redundancy along both the example and the label axis is captured by a single pairwise coefficient;</li>
+              <li>the budget enters as a hard constraint.</li>
+            </ul>
+            <p>The problem is NP-hard and generalizes earlier fixed-cardinality and budgeted models. A GRASP + ALNS metaheuristic finds near-optimal batches in seconds, and under the same budget the model buys substantially more information than earlier formulations on four benchmark datasets.</p>
+          </article>
+
+          <article class="paper">
+            <h3>Optimizing review effort under statistical guarantees with small language models</h3>
+            <p class="meta">Graduation project with Prof. O. Erhun Kundakçıoğlu, 2026–2027, team of students.</p>
+            <p>Instead of letting a model grade, we use small, locally hosted language models as grading support for an Operations Research course. A model suggests rubric-based scores, a solver checks student formulations, conformal prediction estimates the risk of each suggestion, and an optimization model allocates limited TA review time across submissions.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="sec">
+        <h2>Selected projects</h2>
+        <ul class="projects">
+          <li>
+            <h3><a href="https://github.com/umutcanc7/scoutrag">ScoutRAG</a></h3>
+            <span class="stack">Python, Ollama, FastAPI</span>
+            <p>Retrieval-augmented football scouting assistant: strict symbolic filtering for hard constraints, semantic re-ranking with sentence embeddings, and a post-generation check that verifies every cited number against the retrieved rows. CS455 Large Language Models.</p>
+          </li>
+          <li>
+            <h3><a href="https://github.com/umutcanc7/TurkishWordleSolver">Turkish Wordle solver</a></h3>
+            <span class="stack">Python, NumPy</span>
+            <p>Picks the guess with the highest expected information gain over the remaining candidates. Solves Turkish Wordle in 3.87 guesses on average, and 99.25% of games within six, over 100,000 simulated games.</p>
+          </li>
+          <li>
+            <h3><a href="https://github.com/umutcanc7/sozcukcu">Sözcükçü</a></h3>
+            <span class="stack">Flutter, Riverpod</span>
+            <p>An offline Turkish word game for iOS and Android with a deterministic daily word and no server, Turkish-aware text handling, and unit-tested game logic.</p>
+          </li>
+          <li>
+            <h3><a href="https://github.com/umutcanc7/song2vec">Song2Vec</a></h3>
+            <span class="stack">Python, Gensim</span>
+            <p>Treats playlists as sentences and songs as tokens to learn Word2Vec embeddings for next-song recommendation, evaluated with HR@K and NDCG@K, including cold-start and long-tail analysis.</p>
+          </li>
+          <li>
+            <h3><a href="https://github.com/umutcanc7/CS412_HW3">Smile classification with transfer learning</a></h3>
+            <span class="stack">PyTorch</span>
+            <p>Fine-tuning strategies for an ImageNet-pretrained VGG-16 on CelebA; 92.3% validation accuracy when the last convolutional block is fine-tuned.</p>
+          </li>
+          <li>
+            <h3><a href="https://github.com/umutcanc7/CS405_Project3">Procedural terrain in WebGL2</a></h3>
+            <span class="stack">WebGL2, GLSL</span>
+            <p>Real-time terrain from fractal noise or from an uploaded heightmap, with custom shaders, height-based shading and an orbit camera.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="sec">
+        <h2>Experience</h2>
+        <ol class="tl" reversed>
+          <li><span class="when">2026 – now</span><div class="what"><h3>Search team intern, Hepsiburada</h3><p>Product search with Elasticsearch at one of Turkey's largest e-commerce platforms.</p></div></li>
+          <li><span class="when">Apr 2026 – now</span><div class="what"><h3>Undergraduate researcher, Sabancı University</h3><p>Cost-aware active learning with Prof. O. Erhun Kundakçıoğlu.</p></div></li>
+          <li><span class="when">Fall 2025</span><div class="what"><h3>PURE research project: 3D reconstruction</h3><p>Camera calibration, structure from motion and Gaussian Splatting; drone-based view collection in AirSim. With Prof. Hüseyin Özkan and Prof. Erchan Aptoula.</p></div></li>
+          <li><span class="when">Summer 2025</span><div class="what"><h3>Software engineering intern, Yaşar Bilgi</h3><p>Built an attendance and survey management system with React, Spring Boot, PostgreSQL and Keycloak.</p></div></li>
+          <li><span class="when">Spring 2025</span><div class="what"><h3>PURE research project: AI reading tools</h3><p>Effects of AI-assisted reading on students' critical reading; analysis of responses with BERT and LDA. With Ozan Tekin.</p></div></li>
+          <li><span class="when">Summer 2024</span><div class="what"><h3>PURE research project: THz drone networks</h3><p>Beamwidth adjustment for a MAC protocol in THz-band drone networks, implemented in ns-3; presented as a poster. With Prof. Özgür Gürbüz.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="sec">
+        <h2>Education</h2>
+        <div class="edu">
+          <h3>B.Sc. Computer Science and Engineering, Sabancı University</h3>
+          <p class="meta">2022 – January 2027, with a minor in Mathematics</p>
+          <p>GPA 3.72 / 4.00, High Honor every semester, merit scholarship.</p>
+          <p>Relevant courses: Machine Learning, LLMs: Foundations and Practice, Artificial Intelligence, Algorithms, Linear Algebra, Probability, Numerical Analysis, Mathematical Analysis.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>Last updated October 2026.</footer>
+</div>
+
+<script>
+(function () {
+  var labels = ["L1","L2","L3","L4","L5","L6"];
+  var rows = 7;
+  var grid = document.getElementById("qt");
+  var fill = document.getElementById("fill");
+  var spent = document.getElementById("spent");
+  var BUDGET = 12;
+  // Sequence of purchases: [row, col]. Opening a row costs 2, each question costs 1.
+  var plan = [[1,2],[1,4],[3,0],[3,1],[3,5],[5,3]];
+  var cells = [], exLabels = [];
+
+  grid.appendChild(document.createElement("span"));
+  labels.forEach(function (l) { var s = document.createElement("span"); s.className = "lab"; s.textContent = l; grid.appendChild(s); });
+  for (var r = 0; r < rows; r++) {
+    var ex = document.createElement("span"); ex.className = "ex"; ex.textContent = "x" + (r + 1); grid.appendChild(ex); exLabels.push(ex);
+    cells.push([]);
+    for (var c = 0; c < labels.length; c++) { var d = document.createElement("span"); d.className = "c"; grid.appendChild(d); cells[r].push(d); }
+  }
+
+  var timers = [];
+  function reset() {
+    timers.forEach(clearTimeout); timers = [];
+    cells.forEach(function (row) { row.forEach(function (d) { d.className = "c"; }); });
+    exLabels.forEach(function (e) { e.className = "ex"; });
+    fill.style.width = "0%"; spent.textContent = "0 / " + BUDGET;
+  }
+  function apply(upTo) {
+    var used = 0, open = {};
+    for (var i = 0; i < upTo; i++) {
+      var r = plan[i][0], c = plan[i][1];
+      if (!open[r]) { open[r] = true; used += 2; exLabels[r].className = "ex open"; cells[r].forEach(function (d) { if (d.className.indexOf("bought") < 0) d.className = "c row-open"; }); }
+      used += 1; cells[r][c].className = "c bought";
+    }
+    fill.style.width = Math.min(100, used / BUDGET * 100) + "%";
+    spent.textContent = used + " / " + BUDGET;
+  }
+  function run() {
+    reset();
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) { apply(plan.length); return; }
+    plan.forEach(function (_, i) { timers.push(setTimeout(function () { apply(i + 1); }, 600 + i * 650)); });
+  }
+  document.getElementById("replay").addEventListener("click", run);
+  run();
+})();
+</script>
+</body>
+</html>
